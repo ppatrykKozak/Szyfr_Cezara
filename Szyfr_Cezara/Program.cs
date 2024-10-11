@@ -5,7 +5,7 @@ class Szyfr_Cezara
     static void Main()
     {
         Console.WriteLine("Witaj w programie szyfrującym i deszyfrującym Cezara!"); 
-        
+        // Wybór operacji: szyfrowanie lub deszyfrowanie
         string operacja;
         do
         {
@@ -23,9 +23,11 @@ class Szyfr_Cezara
         }
         while (operacja != "S" && operacja != "D");
     
+        // Wprowadzenie tekstu do przetworzenia
         Console.WriteLine("Wprowadź tekst do przetworzenia:");
         string tekst = Console.ReadLine();
-   
+        
+        // Wprowadzenie wartości przesunięcia z walidacją
         int przesuniecie;
         do
         {
@@ -41,21 +43,24 @@ class Szyfr_Cezara
 
         }
         while (true);
-   
+        
+        // Określenie finalnego przesunięcia w zależności od operacji
         int finalnePrzesuniecie;
         if (operacja == "D")
         {
-            finalnePrzesuniecie = -przesuniecie; 
+            finalnePrzesuniecie = -przesuniecie; // Dla deszyfrowania przesunięcie jest ujemne
         }
         else
         {
-            finalnePrzesuniecie = przesuniecie;
+            finalnePrzesuniecie = przesuniecie; // Dla szyfrowania przesunięcie jest dodatnie
         }
-
+        
+        // Przetwarzanie tekstu i wyświetlenie wyniku
         string wynik = PrzetworzTekst(tekst, finalnePrzesuniecie);
         Console.WriteLine($"Wynik przetworzenia: {wynik}");
     }
-    
+
+    // Funkcja przetwarzająca cały tekst według przesunięcia
     static string PrzetworzTekst(string wejscie, int przesuniecie)
     {
         char[] znakiTekstu = new char[wejscie.Length];
